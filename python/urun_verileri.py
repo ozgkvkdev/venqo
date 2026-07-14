@@ -144,11 +144,11 @@ else:
 if urun1["indirim"] == True and urun1 ["fiyat"] >= 1000 :
     print(f"{urun1['ad']} hem indirimde hem ücretsiz kargolu!")
 elif urun1["indirim"] == True and urun1["fiyat"] <1000 :
-    print(f"{urun1['ad']}Oversize Tişört indirimde.")
+    print(f"{urun1['ad']} Tişört indirimde.")
 elif urun1["indirim"] == False and urun1["fiyat"] >= 1000 :
-    print(f"{urun1['ad']} u ürün ücretsiz kargo kampanyasına dahildir.")
+    print(f"{urun1['ad']} ürün ücretsiz kargo kampanyasına dahildir.")
 else:
-    print(f"{urun1['ad']}Normal satış devam ediyor.")
-    
+    print(f"{urun1['ad']} Normal satış devam ediyor.")
+
 
    
