@@ -149,6 +149,6 @@ if bulundu == False:
 min_fiyat=int(input("lütfen bir fiyat giriniz :"))
 
 for urun in urunler:
-   if urun["fiyat"] == min_fiyat:
+   if urun["fiyat"] >= min_fiyat:
       print(f"Ürün: {urun['ad']} - {urun['fiyat']} TL")
   
