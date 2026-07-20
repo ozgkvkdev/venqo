@@ -197,5 +197,3 @@ min_fiyat = int(input("\nMinimum fiyat giriniz: "))
 for urun in urunler:
     if urun["fiyat"] >= min_fiyat:
         print(f"{urun['ad']} - {urun['fiyat']} TL")
-
-
