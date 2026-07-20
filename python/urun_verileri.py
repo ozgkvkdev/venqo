@@ -199,4 +199,3 @@ for urun in urunler:
         print(f"{urun['ad']} - {urun['fiyat']} TL")
 
 
-printf("hello world")
