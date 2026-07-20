@@ -1,3 +1,7 @@
+
+# VENQO ÜRÜN LİSTESİ
+
+
 urunler = [
     {
         "id": 1,
@@ -38,117 +42,158 @@ urunler = [
 ]
 
 
-for urun in urunler :
-  print(urun["ad"])
+# TÜM ÜRÜN ADLARINI LİSTELE
 
+
+print("\n--- Ürün Adları ---")
 
 for urun in urunler:
-    print("------------------------")
+    print(urun["ad"])
+
+
+
+# ÜRÜN DETAYLARINI GÖSTER
+
+
+print("\n--- Ürün Detayları ---")
+
+for urun in urunler:
+    print("----------------------------")
     print(f"Ürün Adı : {urun['ad']}")
     print(f"Kategori : {urun['kategori']}")
     print(f"Fiyat    : {urun['fiyat']} TL")
     print(f"Favori   : {urun['favori']}")
 
-# indirim hesaplama
+
+
+# İNDİRİM DURUMU
+
+
+print("\n--- İndirim Durumu ---")
 
 for urun in urunler:
-   if urun["indirim"]:
-    print(f"ürün adı :{urun['ad']} indirim mevcut")
-   else:
-     print(f"Ürün adı: {urun['ad']} indirim mevcut değil.")
+    if urun["indirim"]:
+        print(f"{urun['ad']} ürününde indirim var.")
+    else:
+        print(f"{urun['ad']} ürününde indirim yok.")
 
 
-# adet hesaplama  
+
+# STOK DURUMU
+
+
+print("\n--- Stok Durumu ---")
 
 for urun in urunler:
-  if urun["stok"] <=5:
-    print(f"{urun['ad']} - {urun['stok']} adet kaldı.")
-  else:
-   print(f"{urun['ad']} - {urun['stok']} adet kaldı.")
+    if urun["stok"] <= 5:
+        print(f"{urun['ad']} - Son {urun['stok']} ürün kaldı.")
+    else:
+        print(f"{urun['ad']} - Stok: {urun['stok']}")
 
 
-# en pahalı ürünü bulma
 
-en_pahali=urunler[0]
+# EN PAHALI ÜRÜN
+
+
+en_pahali = urunler[0]
+
 for urun in urunler:
-  if urun["fiyat"] > en_pahali["fiyat"]:
-    en_pahali=urun
+    if urun["fiyat"] > en_pahali["fiyat"]:
+        en_pahali = urun
 
+print("\n--- En Pahalı Ürün ---")
 print(en_pahali["ad"])
 print(en_pahali["fiyat"])
 
-# en ucuz ürünü bulma
 
-en_ucuz=urunler[0]
+
+# EN UCUZ ÜRÜN
+
+
+en_ucuz = urunler[0]
 
 for urun in urunler:
-  if urun["fiyat"] < en_ucuz["fiyat"]:
-    en_ucuz=urun
+    if urun["fiyat"] < en_ucuz["fiyat"]:
+        en_ucuz = urun
 
+print("\n--- En Ucuz Ürün ---")
 print(en_ucuz["ad"])
 print(en_ucuz["fiyat"])
 
 
-# indirim hesaplama 
 
-indirim_sayisi=0
-for urun in urunler:
-  if urun["indirim"]:
-    indirim_sayisi+=1
-
-print(f"İndirimdeki ürün sayısı: {indirim_sayisi}")
+# İNDİRİMDEKİ ÜRÜN SAYISI
 
 
-# ürünlerin toplam  fiyatını bulma
-
-toplam_fiyat=0
+indirim_sayisi = 0
 
 for urun in urunler:
-  toplam_fiyat+=urun["fiyat"]
+    if urun["indirim"]:
+        indirim_sayisi += 1
 
-print("ürünlerin toplam fiyatı :" , toplam_fiyat)
+print(f"\nİndirimdeki ürün sayısı: {indirim_sayisi}")
 
 
-# Stok değeri 10'dan büyük olan ürünlerin sayısını bul.
 
-stok_degeri=0
+# TOPLAM ÜRÜN FİYATI
+
+
+toplam_fiyat = 0
 
 for urun in urunler:
-  if urun["stok"] > 10:
-    stok_degeri+=1
+    toplam_fiyat += urun["fiyat"]
 
-print(f"dan fazla bulunan ürün sayısı : {stok_degeri}")
+print(f"\nToplam ürün fiyatı: {toplam_fiyat} TL")
 
 
-#----------------------------------------------
+# STOKU 10'DAN FAZLA OLAN ÜRÜNLER
 
-marka = input("Lütfen Bir Marka Giriniz: ")
+stok_sayisi = 0
+
+for urun in urunler:
+    if urun["stok"] > 10:
+        stok_sayisi += 1
+
+print(f"\nStoku 10'dan fazla olan ürün sayısı: {stok_sayisi}")
+
+
+
+# MARKAYA GÖRE ÜRÜN LİSTELEME
+
+marka = input("\nMarka giriniz: ")
 
 for urun in urunler:
     if marka == urun["marka"]:
         print(urun["ad"])
 
 
-urun_adi = input("Lütfen bir ürün adı giriniz: ")
+
+# ÜRÜN ARAMA
+
+
+urun_adi = input("\nÜrün adını giriniz: ")
 
 bulundu = False
 
 for urun in urunler:
     if urun_adi == urun["ad"]:
         bulundu = True
-        print(" Ürün bulundu")
+        print("\nÜrün bulundu.")
         print(f"Ürün Adı : {urun['ad']}")
         print(f"Kategori : {urun['kategori']}")
         print(f"Fiyat    : {urun['fiyat']} TL")
         print(f"Stok     : {urun['stok']}")
 
-if bulundu == False:
-    print(" Aradığınız ürün bulunamadı.")
+if not bulundu:
+    print("Aradığınız ürün bulunamadı.")
 
 
-min_fiyat=int(input("lütfen bir fiyat giriniz :"))
+
+# MİNİMUM FİYATA GÖRE FİLTRELEME
+
+
+min_fiyat = int(input("\nMinimum fiyat giriniz: "))
 
 for urun in urunler:
-   if urun["fiyat"] >= min_fiyat:
-      print(f"Ürün: {urun['ad']} - {urun['fiyat']} TL")
-  
+    if urun["fiyat"] >= min_fiyat:
+        print(f"{urun['ad']} - {urun['fiyat']} TL")
