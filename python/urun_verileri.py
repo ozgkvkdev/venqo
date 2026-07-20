@@ -1,154 +1,154 @@
-# 1. ürün bilgileri
-urun1={
-    "id":1,
-    "ad": "Oversize Tişört",
-    "marka":"VENQO",
-    "kategori": "Tişört",
-    "beden": "L",
-    "renk":"Siyah",
-    "fiyat": 499,
-    "stok":10,
-    "indirim":True,
-    "favori":True,
-}
-
-
-# 2. ürün bilgileri
-urun2={
-    "id":2,
-    "ad": "Kargo Pantolon",
-    "marka":"VENQO",
-    "kategori": "Pantolon",
-    "beden": "M",
-    "renk":"Haki",
-    "fiyat": 899,
-    "stok":20,
-    "indirim":False,
-    "favori":True
-}
-
-#3.ürün bilgileri 
-
-urun3={
-    "id":3,
-    "ad": "Kapüşonlu Hoodie",
-    "marka":"VENQO",
-    "kategori": "Sweatshirt",
-    "beden": "XL",
-    "renk":"Gri",
-    "fiyat": 1099,
-    "stok":12,
-    "indirim":True,
-    "favori":True,
-}
-
-
-
-# 4. ürün bilgileri
-urun4={
-    "id":4,
-    "ad": "Eşofman Altı",
-    "marka":"VENQO",
-    "kategori": "Alt Giyim",
-    "beden": "L",
-    "renk":"Lacivert",
-    "fiyat": 699,
-    "stok":18,
-    "indirim":False,
-    "favori":False,
-}
-
-
-# ürünler listesi oluşturuldu
 urunler = [
-    urun1,
-    urun2,
-    urun3,
-    urun4
-]   
+    {
+        "id": 1,
+        "ad": "Oversize Tişört",
+        "marka": "VENQO",
+        "kategori": "Tişört",
+        "beden": "L",
+        "renk": "Siyah",
+        "fiyat": 499,
+        "stok": 10,
+        "indirim": True,
+        "favori": True
+    },
+    {
+        "id": 2,
+        "ad": "Kargo Pantolon",
+        "marka": "VENQO",
+        "kategori": "Pantolon",
+        "beden": "M",
+        "renk": "Haki",
+        "fiyat": 799,
+        "stok": 20,
+        "indirim": False,
+        "favori": True
+    },
+    {
+        "id": 3,
+        "ad": "Kapüşonlu Hoodie",
+        "marka": "VENQO",
+        "kategori": "Sweatshirt",
+        "beden": "XL",
+        "renk": "Gri",
+        "fiyat": 1099,
+        "stok": 12,
+        "indirim": True,
+        "favori": True
+    }
+]
 
 
-# urun1 stoğu güncellendi
-urun1["stok"]=7       
-
-# urun2 fiyatı güncellendi
-urun2["fiyat"]=799
-urunler[0]["stok"] = urunler[0]["stok"] - 1      
-
-print(urunler[0]["ad"])     # liste üzerinde işlem yapma
-print(urunler[3]["stok"])
-
-print(urunler[1]["ad"])
-print(urunler[3]["fiyat"])
+for urun in urunler :
+  print(urun["ad"])
 
 
+for urun in urunler:
+    print("------------------------")
+    print(f"Ürün Adı : {urun['ad']}")
+    print(f"Kategori : {urun['kategori']}")
+    print(f"Fiyat    : {urun['fiyat']} TL")
+    print(f"Favori   : {urun['favori']}")
 
-# ==========================================
-# STOK KONTROL SİSTEMİ
-# ==========================================
+# indirim hesaplama
 
-
-if urun1["stok"] == 0 :
-    print("Ürün stokta yok")
-
-elif urun1["stok"] >=1 and urun1["stok"] <=5 :
-    print("Son Ürünler ! Acele edin")
-
-elif urun1["stok"] > 5 :
-    print("Ürün Stokta Mevcut")
-
-else:
-    print("Maalesef ürün mevcut değil")
+for urun in urunler:
+   if urun["indirim"]:
+    print(f"ürün adı :{urun['ad']} indirim mevcut")
+   else:
+     print(f"Ürün adı: {urun['ad']} indirim mevcut değil.")
 
 
+# adet hesaplama  
 
-# ==========================================
-# İNDİRİM KONTROL SİSTEMİ
-# ==========================================
-
-
-if urun1["indirim"]:
-    print(f" {urun1['ad']} ürünü indirimde!")
-else:
-    print(f"{urun1['ad']} ürününde indirim bulunmuyor.")
+for urun in urunler:
+  if urun["stok"] <=5:
+    print(f"{urun['ad']} - {urun['stok']} adet kaldı.")
+  else:
+   print(f"{urun['ad']} - {urun['stok']} adet kaldı.")
 
 
+# en pahalı ürünü bulma
 
-# ==========================================
-# FAVORİ KONTROL SİSTEMİ
-# ==========================================
+en_pahali=urunler[0]
+for urun in urunler:
+  if urun["fiyat"] > en_pahali["fiyat"]:
+    en_pahali=urun
 
+print(en_pahali["ad"])
+print(en_pahali["fiyat"])
 
-if urun1["favori"]:
-    print(f"{urun1['ad']} favorilerinizde bulunuyor.")
-else:
-    print(f"{urun1['ad']} favorilerinizde bulunmuyor.")
+# en ucuz ürünü bulma
 
+en_ucuz=urunler[0]
 
-# --------------------------------------
-# Ücretsiz Kargo Sistemi
-#---------------------------------------
+for urun in urunler:
+  if urun["fiyat"] < en_ucuz["fiyat"]:
+    en_ucuz=urun
 
-if urun1["fiyat"] >= 1000 :
-    print(f'{urun1["ad"]} Bu ürün ücretsiz kargo kampanyasına dahildir.')
-elif urun1["fiyat"] >=700 and urun1["fiyat"] <=999:
-    print(f'{urun1["ad"]} Bu ürün ücretsiz kargo kampanyasına dahildir.')
-else:
-    print(f'{urun1["ad"]} Bu ürün ücretsiz kargo kampanyasına dahil değildir.')
+print(en_ucuz["ad"])
+print(en_ucuz["fiyat"])
 
 
+# indirim hesaplama 
 
-# VIP Kampanya Sistemi
-#----------------------#
+indirim_sayisi=0
+for urun in urunler:
+  if urun["indirim"]:
+    indirim_sayisi+=1
 
-if urun1["indirim"] == True and urun1 ["fiyat"] >= 1000 :
-    print(f"{urun1['ad']} hem indirimde hem ücretsiz kargolu!")
-elif urun1["indirim"] == True and urun1["fiyat"] <1000 :
-    print(f"{urun1['ad']} Tişört indirimde.")
-elif urun1["indirim"] == False and urun1["fiyat"] >= 1000 :
-    print(f"{urun1['ad']} ürün ücretsiz kargo kampanyasına dahildir.")
-else:
-    print(f"{urun1['ad']} Normal satış devam ediyor.")
+print(f"İndirimdeki ürün sayısı: {indirim_sayisi}")
 
 
-   
+# ürünlerin toplam  fiyatını bulma
+
+toplam_fiyat=0
+
+for urun in urunler:
+  toplam_fiyat+=urun["fiyat"]
+
+print("ürünlerin toplam fiyatı :" , toplam_fiyat)
+
+
+# Stok değeri 10'dan büyük olan ürünlerin sayısını bul.
+
+stok_degeri=0
+
+for urun in urunler:
+  if urun["stok"] > 10:
+    stok_degeri+=1
+
+print(f"dan fazla bulunan ürün sayısı : {stok_degeri}")
+
+
+#----------------------------------------------
+
+marka = input("Lütfen Bir Marka Giriniz: ")
+
+for urun in urunler:
+    if marka == urun["marka"]:
+        print(urun["ad"])
+
+
+urun_adi = input("Lütfen bir ürün adı giriniz: ")
+
+bulundu = False
+
+for urun in urunler:
+    if urun_adi == urun["ad"]:
+        bulundu = True
+        print(" Ürün bulundu")
+        print(f"Ürün Adı : {urun['ad']}")
+        print(f"Kategori : {urun['kategori']}")
+        print(f"Fiyat    : {urun['fiyat']} TL")
+        print(f"Stok     : {urun['stok']}")
+
+if bulundu == False:
+    print(" Aradığınız ürün bulunamadı.")
+
+
+min_fiyat=int(input("lütfen bir fiyat giriniz :"))
+
+for urun in urunler:
+   if urun["fiyat"] == min_fiyat:
+      print(f"Ürün: {urun['ad']} - {urun['fiyat']} TL")
+  
