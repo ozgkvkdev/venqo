@@ -185,7 +185,7 @@ for urun in urunler:
         print(f"Stok     : {urun['stok']}")
 
 if not bulundu:
-    print("Aradığınız ürün bulunamadı.")
+    print("Aradığınız ürün bulunamadı!")
 
 
 
